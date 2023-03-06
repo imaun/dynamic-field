@@ -1,6 +1,6 @@
 namespace ImanN.DynamicFields;
 
-public abstract class DynamicFieldId<T> 
+public class DynamicFieldId<T> 
 {
 
     public DynamicFieldId(T value)
