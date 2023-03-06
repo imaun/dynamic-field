@@ -1,7 +1,7 @@
 namespace ImanN.DynamicFields.Contracts;
 
-public interface ISpecification<in T>
+public interface ISpecification<in TValue>
 {
     
-    bool IsSatisfiedBy(T entity);
+    bool IsSatisfiedBy(TValue value);
 }

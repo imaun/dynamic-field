@@ -1,8 +1,8 @@
 namespace ImanN.DynamicFields.Contracts;
 
-public interface IDynamicField
+public interface IDynamicField<TValue>
 {
-    void SetValue(string value);
+    void SetValue(TValue value);
     
-    string Value { get; }
+    TValue Value { get; }
 }

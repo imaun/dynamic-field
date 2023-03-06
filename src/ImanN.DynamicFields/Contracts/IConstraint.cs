@@ -1,6 +1,6 @@
 namespace ImanN.DynamicFields.Contracts;
 
-public interface IConstraint : ISpecification<string>
+public interface IConstraint<TValue> : ISpecification<TValue>
 {
     
 }
