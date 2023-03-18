@@ -10,7 +10,7 @@ public class ArrayField<TValue> : DynamicField<Guid, ArrayFieldValue<TValue>>
     public ArrayField(
         DynamicFieldId<Guid> id, string name, 
         string title, bool isRequired, 
-        List<Constraint< ArrayFieldValue<TValue>>> constraints
+        List<Constraint<ArrayFieldValue<TValue>>> constraints
         ) : base(id, name, title, isRequired, constraints)
     {
     }
