@@ -26,15 +26,15 @@ public class int_tests
             new DynamicFieldId<Guid>(Guid.NewGuid()), 
             "minINt", "min int", false, constraints);
         
-        Assert.Throws<DynamicFieldConstraintViolationException>(() => field.SetValue(value));
+        Assert.Throws<MaxIntegerException>(() => field.SetValue(value));
     }
 
     [Theory]
-    [InlineData(20, 500000, 1)]
-    [InlineData(200, 300, 318)]
-    [InlineData(-10, 0, -11)]
+    [InlineData(20, 500000, 1, "min")]
+    [InlineData(200, 300, 318, "max")]
+    [InlineData(-10, 0, -11, "min")]
     public void should_throw_exception_if_min_or_max_constraints_violated(
-        int min, int max, int value)
+        int min, int max, int value, string mode)
     {
         var constraints = new List<Constraint<int>>
         {
@@ -46,6 +46,11 @@ public class int_tests
             new DynamicFieldId<Guid>(Guid.NewGuid()),
             "MyInt", "MyInt", true, constraints);
 
-        Assert.Throws<DynamicFieldConstraintViolationException>(() => field.SetValue(value));
+        if (mode == "min")
+            Assert.Throws<MinIntegerException>(() => field.SetValue(value));
+        else
+            Assert.Throws<MaxIntegerException>(() => field.SetValue(value));
+        
+        // Assert.Throws<DynamicFieldConstraintViolationException>(() => field.SetValue(value));
     }
 }

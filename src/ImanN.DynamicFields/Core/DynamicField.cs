@@ -1,5 +1,4 @@
 using ImanN.DynamicFields.Contracts;
-using ImanN.DynamicFields.Exceptions;
 
 namespace ImanN.DynamicFields;
 
@@ -46,8 +45,12 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
 
     private void GuardAgainstViolatedConstraints(TValue value)
     {
-        var violations = _constraints.Where(_ => !_.IsSatisfiedBy(value)).ToList();
-        if (violations.Any())
-            throw new DynamicFieldConstraintViolationException();
+        if(!_constraints.Any()) return;
+        
+        foreach(var c in _constraints)
+            c.Validate(value);
+        // var violations = _constraints.Where(_ => !_.IsSatisfiedBy(value)).ToList();
+        // if (violations.Any())
+        //     throw new DynamicFieldConstraintViolationException();
     }
 }

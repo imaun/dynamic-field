@@ -10,10 +10,15 @@ public class MaxIntegerConstraint : Constraint<int>
         _max = max;
     }
     
-    public override string Key => "Int.Max";
+    public override string Name => "Int.Max";
     
     public override bool IsSatisfiedBy(int value)
     {
         return value < _max;
+    }
+
+    public override void Validate(int value)
+    {
+        if (value > _max) throw new MaxIntegerException(_max);
     }
 }
