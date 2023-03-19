@@ -56,6 +56,11 @@ public class ArrayFieldValue<TValue>
         _lastIndex++;
     }
 
+    public void AddRange(IEnumerable<TValue> items)
+    {
+        foreach(var item in items) Add(item);
+    }
+
     public bool Contains(TValue value)
     {
         if (value is null) throw new ArgumentNullException(nameof(value));
@@ -64,4 +69,14 @@ public class ArrayFieldValue<TValue>
     }
 
     public int Count => _values.Count;
+
+    public IList<TValue> ToList()
+    {
+        return _values.Select(_ => _.Value).ToList();
+    }
+
+    public TValue[] ToArray()
+    {
+        return _values.Select(_ => _.Value).ToArray();
+    }
 }
