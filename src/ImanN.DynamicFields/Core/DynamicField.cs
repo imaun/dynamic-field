@@ -14,10 +14,22 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
         Id = id ?? throw new ArgumentNullException(nameof(id));
         Name = name;
         Title = title;
-        IsRequired = isRequired;
+        Required = isRequired;
         _constraints = constraints ?? new List<Constraint<TValue>>();
     }
-    
+
+    protected DynamicField(DynamicFieldId<TId> id)
+    {
+        Id = id ?? throw new ArgumentNullException(nameof(id));
+    }
+
+    /// <summary>
+    /// This is a parameterless ctor. You have to initialize the <see cref="Id"/> properly.
+    /// </summary>
+    protected DynamicField()
+    {
+    }
+
     public IReadOnlyCollection<Constraint<TValue>> Constraints => _constraints.AsReadOnly();
     
     public DynamicFieldId<TId> Id { get; set; }
@@ -30,7 +42,7 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
     
     public TValue Value { get; protected set; }
     
-    public bool IsRequired { get; protected set; }
+    public bool Required { get; protected set; }
 
     public void SetValue(TValue value)
     {

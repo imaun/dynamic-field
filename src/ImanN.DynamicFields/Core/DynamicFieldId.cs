@@ -9,7 +9,12 @@ public class DynamicFieldId<T>
     }
     
     public T Value { get; set; }
-    
+
+
+    public static DynamicFieldId<T> Create(T value)
+    {
+        return new DynamicFieldId<T>(value);
+    }
 
     public override bool Equals(object obj)
     {
