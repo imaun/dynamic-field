@@ -10,6 +10,11 @@ public class TextMinLenConstraint : Constraint<string>
         _min = min;
     }
 
+    public static TextMinLenConstraint Create(int min)
+    {
+        return new TextMinLenConstraint(min);
+    }
+
     public override string Name => "Text.MinLen";
     
     public override bool IsSatisfiedBy(string value)

@@ -13,6 +13,12 @@ public class TextField : DynamicField<Guid, string>
         return new TextField { Id = DynamicFieldId<Guid>.Create(id) };
     }
 
+    public static TextField Create(Guid id, string value)
+    {
+        var field = new TextField { Id = DynamicFieldId<Guid>.Create(id) };
+        field.SetValue(value);
+        return field;
+    }
 
     public TextField WithName(string name)
     {

@@ -10,6 +10,11 @@ public class TextMaxLenConstraint : Constraint<string>
         _max = max;
     }
 
+    public static TextMaxLenConstraint Create(int max)
+    {
+        return new TextMaxLenConstraint(max);
+    }
+
     public override string Name => "Text.MaxLen";
     
     public override bool IsSatisfiedBy(string value)

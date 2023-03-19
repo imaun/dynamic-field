@@ -15,12 +15,13 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
         Name = name;
         Title = title;
         Required = isRequired;
-        _constraints = constraints ?? new List<Constraint<TValue>>();
+        _constraints = constraints ?? new();
     }
 
     protected DynamicField(DynamicFieldId<TId> id)
     {
         Id = id ?? throw new ArgumentNullException(nameof(id));
+        _constraints = new();
     }
 
     /// <summary>
@@ -28,6 +29,7 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
     /// </summary>
     protected DynamicField()
     {
+        _constraints = new();
     }
 
     public IReadOnlyCollection<Constraint<TValue>> Constraints => _constraints.AsReadOnly();
@@ -64,5 +66,15 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
         // var violations = _constraints.Where(_ => !_.IsSatisfiedBy(value)).ToList();
         // if (violations.Any())
         //     throw new DynamicFieldConstraintViolationException();
+    }
+
+    public void AddConstraint(Constraint<TValue> constraint)
+    {
+        _constraints.Add(constraint);
+    }
+
+    public void RemoveConstraint(Constraint<TValue> constraint)
+    {
+        _constraints.Remove(constraint);
     }
 }
