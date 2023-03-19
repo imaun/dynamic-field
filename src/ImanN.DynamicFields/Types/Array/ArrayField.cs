@@ -1,9 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace ImanN.DynamicFields;
 
+/// <summary>
+/// It's a List of Values which hase the same type.
+/// </summary>
+/// <typeparam name="TValue"></typeparam>
 public class ArrayField<TValue> : DynamicField<Guid, ArrayFieldValue<TValue>>
 {
     
@@ -13,8 +13,8 @@ public class ArrayField<TValue> : DynamicField<Guid, ArrayFieldValue<TValue>>
         List<Constraint<ArrayFieldValue<TValue>>> constraints
         ) : base(id, name, title, isRequired, constraints)
     {
+        Value = new ArrayFieldValue<TValue>();
     }
-    
     
 }
 
@@ -33,6 +33,9 @@ public class ArrayFieldValue<TValue>
         if (values is null) throw new ArgumentNullException(nameof(values));
         Add(values);
     }
+    
+    
+    public TValue this[int index] => _values[index];
 
     public void RemoveAll()
     {
@@ -52,4 +55,13 @@ public class ArrayFieldValue<TValue>
         _values.Add(_lastIndex, value);
         _lastIndex++;
     }
+
+    public bool Contains(TValue value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+
+        return _values.ContainsValue(value);
+    }
+
+    public int Count => _values.Count;
 }
