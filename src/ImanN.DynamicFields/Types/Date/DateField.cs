@@ -1,5 +1,8 @@
-namespace ImanN.DynamicFields.Types;
+namespace ImanN.DynamicFields;
 
+/// <summary>
+/// DynamicField which supports <see cref="DateOnly"/> type value.
+/// </summary>
 public class DateField : DynamicField<Guid, DateOnly>
 {
 
