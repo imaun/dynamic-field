@@ -1,6 +1,4 @@
-using ImanN.DynamicFields.Exceptions;
-
-namespace ImanN.DynamicFields;
+namespace ImanN.DynamicFields.Exceptions;
 
 public class MaxIntegerException : DynamicFieldConstraintViolationException
 {

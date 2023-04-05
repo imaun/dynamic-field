@@ -4,7 +4,7 @@ namespace ImanN.DynamicFields;
 
 /// <summary>
 /// A constraint on <see cref="DateField"/> which will make sure the value of 
-/// the field is not greater than the value of the constraint.
+/// the field is not greater than the value of this constraint.
 /// </summary>
 public class MaxDateConstraint : Constraint<DateOnly>
 {
