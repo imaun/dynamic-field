@@ -19,6 +19,6 @@ public class MaxIntegerConstraint : Constraint<int>
 
     public override void Validate(int value)
     {
-        if (value > _max) throw new MaxIntegerException(_max);
+        if (!IsSatisfiedBy(value)) throw new MaxIntegerException(_max);
     }
 }
