@@ -46,7 +46,7 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
     
     public bool Required { get; protected set; }
 
-    public void SetValue(TValue value)
+    public virtual void SetValue(TValue value)
     {
         GuardAgainstViolatedConstraints(value);
         Value = value;

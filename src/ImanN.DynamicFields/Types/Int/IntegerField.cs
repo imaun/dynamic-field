@@ -1,5 +1,8 @@
 namespace ImanN.DynamicFields;
 
+/// <summary>
+/// DynamicField which supports <see cref="Int32"/> type value.
+/// </summary>
 public class IntegerField : DynamicField<Guid, int>
 {
     
