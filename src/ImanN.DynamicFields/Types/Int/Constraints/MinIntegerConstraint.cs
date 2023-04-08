@@ -18,6 +18,6 @@ public class MinIntegerConstraint : Constraint<int>
 
     public override void Validate(int value)
     {
-        if (value < _min) throw new MinIntegerException(_min);
+        if (!IsSatisfiedBy(value)) throw new MinIntegerException(_min);
     }
 }
