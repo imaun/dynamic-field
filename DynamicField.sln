@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicFields.UnitTests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImanN.DynamicFields.Persistence", "src\ImanN.DynamicFields.Persistence\ImanN.DynamicFields.Persistence.csproj", "{69342326-791B-4FE4-BF2F-196101A32D2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImanN.DynamicFields.EntityFramework", "src\ImanN.DynamicFields.EntityFramework\ImanN.DynamicFields.EntityFramework.csproj", "{D8E54167-6127-4C83-848E-CC3641F94A19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,7 @@ Global
 		{53683357-ACF2-4B6A-A45A-59419147A315} = {54B98337-47F2-4773-91AA-D41CE4326BF3}
 		{0ADAA552-08AB-4421-A2CC-1E7CB21EDC0A} = {6F22B4C6-56F0-4654-95F1-ED8C20326CB1}
 		{69342326-791B-4FE4-BF2F-196101A32D2F} = {54B98337-47F2-4773-91AA-D41CE4326BF3}
+		{D8E54167-6127-4C83-848E-CC3641F94A19} = {54B98337-47F2-4773-91AA-D41CE4326BF3}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{53683357-ACF2-4B6A-A45A-59419147A315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,5 +36,9 @@ Global
 		{69342326-791B-4FE4-BF2F-196101A32D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69342326-791B-4FE4-BF2F-196101A32D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69342326-791B-4FE4-BF2F-196101A32D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E54167-6127-4C83-848E-CC3641F94A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E54167-6127-4C83-848E-CC3641F94A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E54167-6127-4C83-848E-CC3641F94A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E54167-6127-4C83-848E-CC3641F94A19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
