@@ -20,7 +20,7 @@ public class DecimalField : DynamicField<Guid, decimal>
     public override void SetValue(decimal value)
     {
         base.SetValue(value);
-        Value = IgnoreAfterDecimalPlace(Value, DecimalPlace);
+        _value = IgnoreAfterDecimalPlace(Value, DecimalPlace);
     }
 
     private decimal IgnoreAfterDecimalPlace(decimal value, int decimalPlace)

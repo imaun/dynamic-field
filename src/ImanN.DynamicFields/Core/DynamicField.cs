@@ -6,6 +6,7 @@ namespace ImanN.DynamicFields;
 public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
 {
     private List<Constraint<TValue>> _constraints;
+    protected TValue _value;
 
     public DynamicField(
         DynamicFieldId<TId> id, string name, string title, 
@@ -41,15 +42,15 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
     public string Name { get; protected set; }
 
     public bool IsActive { get; protected set; }
-    
-    public TValue Value { get; protected set; }
+
+    public TValue Value => _value;
     
     public bool Required { get; protected set; }
 
     public virtual void SetValue(TValue value)
     {
         GuardAgainstViolatedConstraints(value);
-        Value = value;
+        _value = value;
     }
 
     public void Disable() => IsActive = false;
@@ -63,9 +64,6 @@ public abstract class DynamicField<TId, TValue> : IDynamicField<TValue>
         
         foreach(var c in _constraints)
             c.Validate(value);
-        // var violations = _constraints.Where(_ => !_.IsSatisfiedBy(value)).ToList();
-        // if (violations.Any())
-        //     throw new DynamicFieldConstraintViolationException();
     }
 
     public void AddConstraint(Constraint<TValue> constraint)

@@ -13,7 +13,7 @@ public class ArrayField<TValue> : DynamicField<Guid, ArrayFieldValue<TValue>>
         List<Constraint<ArrayFieldValue<TValue>>> constraints
         ) : base(id, name, title, isRequired, constraints)
     {
-        Value = new ArrayFieldValue<TValue>();
+        SetValue(new ArrayFieldValue<TValue>());
     }
     
 }

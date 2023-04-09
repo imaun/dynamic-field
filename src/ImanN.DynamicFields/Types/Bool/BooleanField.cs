@@ -55,7 +55,7 @@ public class BooleanField : DynamicField<Guid, bool>
 
     public BooleanField WithValue(bool value)
     {
-        Value = value;
+        SetValue(value);
         return this;
     }
 
