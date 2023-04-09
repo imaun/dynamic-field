@@ -29,10 +29,9 @@ public class date_tests
         {
             new MaxDateConstraint(new DateOnly(2023,03,03))
         });
-        date.Set(2024,1,1);
-        var  a = date.Constraints.First();
-        Assert.False(a.IsSatisfiedBy(date.Value));
-        Assert.Throws<MaxDateException>(()=>a.Validate(date.Value));
+        
+    
+        Assert.Throws<MaxDateException>(()=>date.Set(2024,1,1));
     }
     
     [Fact]
@@ -43,10 +42,9 @@ public class date_tests
             {
                 new MinDateConstraint(new DateOnly(2023,03,03))
             });
-        date.Set(2022,1,1);
-        var a = date.Constraints.First();
-        Assert.False(date.Constraints.First().IsSatisfiedBy(date.Value));
-        Assert.Throws<MinDateException>(()=>a.Validate(date.Value));
+        ;
+       
+        Assert.Throws<MinDateException>(() => date.Set(2022,1,1));
     }
     
     
