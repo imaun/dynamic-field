@@ -2,7 +2,10 @@ using ImanN.DynamicFields.Exceptions;
 
 namespace ImanN.DynamicFields;
 
-
+/// <summary>
+/// Maximum constraint for <see cref="IntegerField"/>
+/// This make sures the value of field is always less than the Max value. 
+/// </summary>
 public class MaxIntegerConstraint : Constraint<int>
 {
     private int _max;
