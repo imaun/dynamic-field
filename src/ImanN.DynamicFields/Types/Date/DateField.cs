@@ -22,21 +22,21 @@ public class DateField : DynamicField<Guid, DateOnly>
 
     public void SetYear(int year)
     {
-        Value = new DateOnly(year, Month, Day);
+        SetValue(new DateOnly(year, Month, Day));
     }
 
     public void SetMonth(int month)
     {
-        Value = new DateOnly(Year, month, Day);
+         SetValue(new DateOnly(Year, month, Day));
     }
 
     public void SetDay(int day)
     {
-        Value = new DateOnly(Year, Month, day);
+        SetValue(new DateOnly(Year, Month, day));
     }
 
     public void Set(int year, int month, int day)
     {
-        Value = new DateOnly(year, month, day);
+        SetValue(new DateOnly(year, month, day));
     }
 }
