@@ -24,8 +24,4 @@
       <ProjectReference Include="..\..\src\ImanN.DynamicFields\ImanN.DynamicFields.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="DateRange" />
-    </ItemGroup>
-
 </Project>
