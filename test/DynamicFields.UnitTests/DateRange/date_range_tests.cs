@@ -44,4 +44,11 @@ public class date_range_tests
         var dateRangeError = () => dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(20)));
         Assert.Throws<DateRangeMinException>(dateRangeError);
     }
+
+    [Fact]
+    public void define_date_range_value_with_startDate_Greater_than_EndDate()
+    {
+        var dateRangeException = () => new DateRangeValue(DateTime.Now.AddDays(3), DateTime.Today.AddDays(2));
+        Assert.Throws<DateRangeStartDateGreaterThanEndDateException>(dateRangeException);
+    }
 }
