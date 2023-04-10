@@ -29,7 +29,19 @@ public class date_range_tests
             {
                 new MaxDateRangeConstraint(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(3)))
             });
-        var dateRangeError = ()=>dateRange.SetValue(new DateRangeValue(DateTime.Today,DateTime.Today.AddDays(4)));
+        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(4)));
         Assert.Throws<DateRangeMaxException>(dateRangeError);
+    }
+
+    [Fact]
+    public void define_date_range_with_min_date_constraint()
+    {
+        var dateRange = new DateRangeField(new DynamicFieldId<Guid>(Guid.NewGuid()), "DateRange", "DateRange", false,
+            new List<Constraint<DateRangeValue>>
+            {
+                new MinDateRangeConstraint(new DateRangeValue(DateTime.Today.AddDays(2), DateTime.Today.AddDays(5)))
+            });
+        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(20)));
+        Assert.Throws<DateRangeMinException>(dateRangeError);
     }
 }
