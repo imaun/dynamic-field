@@ -10,16 +10,15 @@ public class MinDateConstraint : Constraint<DateOnly>
 {
     public override string Name => "Date.Min";
 
-    private readonly DateOnly _minValue;
 
     public MinDateConstraint(DateOnly minValue)
     {
-        _minValue = minValue;
+        Value = minValue;
     }
 
     public override bool IsSatisfiedBy(DateOnly value)
     {
-        return value > _minValue;
+        return value > Value;
     }
 
     public override void Validate(DateOnly value)

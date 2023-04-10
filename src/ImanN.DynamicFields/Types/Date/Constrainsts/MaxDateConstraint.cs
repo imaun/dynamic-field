@@ -10,16 +10,15 @@ public class MaxDateConstraint : Constraint<DateOnly>
 {
     public override string Name => "Date.Max";
 
-    private DateOnly _maxDate;
 
     public MaxDateConstraint(DateOnly maxDate)
     {
-        _maxDate = maxDate;
+        Value = maxDate;
     }
-    
+
     public override bool IsSatisfiedBy(DateOnly value)
     {
-        return value < _maxDate;
+        return value < Value;
     }
 
     public override void Validate(DateOnly value)
