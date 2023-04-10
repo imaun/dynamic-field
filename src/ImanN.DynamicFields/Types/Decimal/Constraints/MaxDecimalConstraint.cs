@@ -8,22 +8,22 @@ namespace ImanN.DynamicFields.Constraints;
 /// </summary>
 public class MaxDecimalConstraint : Constraint<decimal>
 {
-    private decimal _max;
+    
 
     public MaxDecimalConstraint(decimal max)
     {
-        _max = max;
+        Value = max;
     }
 
     public override string Name => "Decimal.Max";
     
     public override bool IsSatisfiedBy(decimal value)
     {
-        return value < _max;
+        return value < Value;
     }
 
     public override void Validate(decimal value)
     {
-        if (!IsSatisfiedBy(value)) throw new MaxDecimalException(_max);
+        if (!IsSatisfiedBy(value)) throw new MaxDecimalException(Value);
     }
 }

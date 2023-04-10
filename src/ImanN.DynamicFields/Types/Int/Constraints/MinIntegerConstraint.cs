@@ -2,22 +2,22 @@ namespace ImanN.DynamicFields;
 
 public class MinIntegerConstraint : Constraint<int>
 {
-    private readonly int _min;
+    
 
     public MinIntegerConstraint(int min)
     {
-        _min = min;
+        Value = min;
     }
     
     public override string Name => "Int.Min";
     
     public override bool IsSatisfiedBy(int value)
     {
-        return value > _min;
+        return value > Value;
     }
 
     public override void Validate(int value)
     {
-        if (!IsSatisfiedBy(value)) throw new MinIntegerException(_min);
+        if (!IsSatisfiedBy(value)) throw new MinIntegerException(Value);
     }
 }
