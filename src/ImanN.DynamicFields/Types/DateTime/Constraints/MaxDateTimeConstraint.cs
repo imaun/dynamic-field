@@ -1,3 +1,5 @@
+using ImanN.DynamicFields.Exceptions;
+
 namespace ImanN.DynamicFields.Constraints;
 
 public class MaxDateTimeConstraint : Constraint<DateTime>
@@ -16,6 +18,6 @@ public class MaxDateTimeConstraint : Constraint<DateTime>
 
     public override void Validate(DateTime value)
     {
-        if (!IsSatisfiedBy(value)) throw new Exception();
+        if (!IsSatisfiedBy(value)) throw new MaxDateTimeException(value);
     }
 }
