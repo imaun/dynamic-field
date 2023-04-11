@@ -15,8 +15,8 @@ public class date_range_tests
     {
         var dateRange = new DateRangeField(new DynamicFieldId<Guid>(Guid.NewGuid()), "DateRange", "DateRange"
             , false, new List<Constraint<DateRangeValue>>());
-        dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(2)));
-        var expectedDate = new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(2));
+        dateRange.SetValue(new DateRangeValue(System.DateTime.Today, System.DateTime.Today.AddDays(2)));
+        var expectedDate = new DateRangeValue(System.DateTime.Today, System.DateTime.Today.AddDays(2));
         Assert.Equal(expectedDate.StartDate, dateRange.Value.StartDate);
         Assert.Equal(expectedDate.EndDate, dateRange.Value.EndDate);
     }
@@ -27,9 +27,9 @@ public class date_range_tests
         var dateRange = new DateRangeField(new DynamicFieldId<Guid>(Guid.NewGuid()), "DateRange", "DateRange", false
             , new List<Constraint<DateRangeValue>>()
             {
-                new MaxDateRangeConstraint(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(3)))
+                new MaxDateRangeConstraint(new DateRangeValue(System.DateTime.Today, System.DateTime.Today.AddDays(3)))
             });
-        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(4)));
+        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(System.DateTime.Today, System.DateTime.Today.AddDays(4)));
         Assert.Throws<DateRangeMaxException>(dateRangeError);
     }
 
@@ -39,16 +39,16 @@ public class date_range_tests
         var dateRange = new DateRangeField(new DynamicFieldId<Guid>(Guid.NewGuid()), "DateRange", "DateRange", false,
             new List<Constraint<DateRangeValue>>
             {
-                new MinDateRangeConstraint(new DateRangeValue(DateTime.Today.AddDays(2), DateTime.Today.AddDays(5)))
+                new MinDateRangeConstraint(new DateRangeValue(System.DateTime.Today.AddDays(2), System.DateTime.Today.AddDays(5)))
             });
-        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(DateTime.Today, DateTime.Today.AddDays(20)));
+        var dateRangeError = () => dateRange.SetValue(new DateRangeValue(System.DateTime.Today, System.DateTime.Today.AddDays(20)));
         Assert.Throws<DateRangeMinException>(dateRangeError);
     }
 
     [Fact]
     public void define_date_range_value_with_startDate_Greater_than_EndDate()
     {
-        var dateRangeException = () => new DateRangeValue(DateTime.Now.AddDays(3), DateTime.Today.AddDays(2));
+        var dateRangeException = () => new DateRangeValue(System.DateTime.Now.AddDays(3), System.DateTime.Today.AddDays(2));
         Assert.Throws<DateRangeStartDateGreaterThanEndDateException>(dateRangeException);
     }
 }
